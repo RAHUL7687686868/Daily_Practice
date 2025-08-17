@@ -1,6 +1,12 @@
-// Last updated: 8/17/2025, 11:34:34 PM
+// Last updated: 8/17/2025, 11:38:21 PM
 class Solution {
-    public boolean isPowerOfTwo(int n) {
-        return n > 0 && (n & (n - 1)) == 0;    
+    public boolean isPowerOfThree(int n) {
+        if(n <= 0){
+            return false;
+        }
+        while(n % 3 == 0){
+            n /= 3;
+        }
+        return n == 1;
     }
 }
