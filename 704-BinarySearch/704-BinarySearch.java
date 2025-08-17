@@ -1,29 +1,17 @@
-// Last updated: 8/17/2025, 10:05:56 PM
-/** 
- * Forward declaration of guess API.
- * @param  num   your guess
- * @return 	     -1 if num is higher than the picked number
- *			      1 if num is lower than the picked number
- *               otherwise return 0
- * int guess(int num);
- */
-
-public class Solution extends GuessGame {
-    public int guessNumber(int n) {
-        int left = 0, right = n;
-        while(left <= right){
-            int mid = left + (right - left)/ 2;
-            int res = guess(mid);
-            if(res == 0){
-                return mid;
-            }
-            else if(res < 0){
-                right = mid - 1;
+// Last updated: 8/17/2025, 10:15:54 PM
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        int srt = 0;
+        int end = arr.length - 1;
+        while(srt < end){
+            int mid = srt + (end - srt)/ 2;
+            if(arr[mid] > arr[mid + 1]){
+                end = mid;
             }
             else{
-                left = mid + 1;
+                srt = mid + 1;
             }
         }
-        return -1;
+        return srt;
     }
 }
