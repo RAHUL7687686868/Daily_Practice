@@ -1,17 +1,30 @@
-// Last updated: 8/17/2025, 10:15:54 PM
+// Last updated: 8/17/2025, 10:42:41 PM
 class Solution {
-    public int peakIndexInMountainArray(int[] arr) {
-        int srt = 0;
-        int end = arr.length - 1;
-        while(srt < end){
-            int mid = srt + (end - srt)/ 2;
-            if(arr[mid] > arr[mid + 1]){
-                end = mid;
-            }
-            else{
-                srt = mid + 1;
+    public int calPoints(String[] operations) {
+        Stack<Integer> stack = new Stack<>();
+        for(String op : operations){
+            switch(op){
+                case "+":
+                int top = stack.pop();
+                int newTop = top + stack.peek();
+                stack.push(top);
+                stack.push(newTop);
+                break;
+                case "D":
+                stack.push(stack.peek()*2);
+                break;
+                case "C":
+                stack.pop();
+                break;
+                default:
+                stack.push(Integer.parseInt(op));
+                break;
             }
         }
-        return srt;
+        int sum = 0;
+        for(int score : stack){
+            sum += score;
+        }
+        return sum;
     }
 }
