@@ -1,15 +1,13 @@
-// Last updated: 8/18/2025, 1:47:15 PM
+// Last updated: 8/18/2025, 1:56:26 PM
 class Solution {
-    public int firstUniqChar(String s) {
-        int [] freq = new int [26];
+    public char findTheDifference(String s, String t) {
+        int result = 0;
         for (char c : s.toCharArray()) {
-            freq[c - 'a']++;
+            result ^= c;
         }
-        for (int i = 0; i < s.length(); i++) {
-            if (freq[s.charAt(i) - 'a'] == 1) {
-                return i;
-            }
+        for (char c : t.toCharArray()) {
+            result ^= c;
         }
-        return -1;
+        return (char) result;
     }
 }
