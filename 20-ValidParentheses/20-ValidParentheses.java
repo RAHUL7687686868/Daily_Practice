@@ -1,17 +1,15 @@
-// Last updated: 8/18/2025, 1:45:42 PM
+// Last updated: 8/18/2025, 1:47:15 PM
 class Solution {
-    public boolean isAnagram(String s1, String s2) {
-        if (s1.length() != s2.length()) {
-            return false;
+    public int firstUniqChar(String s) {
+        int [] freq = new int [26];
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
         }
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
-
-        char[] arr1 = s1.toCharArray();
-        char[] arr2 = s2.toCharArray();
-
-        Arrays.sort(arr1);
-        Arrays.sort(arr2);
-        return Arrays.equals(arr1, arr2);
+        for (int i = 0; i < s.length(); i++) {
+            if (freq[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
