@@ -1,20 +1,12 @@
-// Last updated: 8/18/2025, 1:41:22 PM
+// Last updated: 8/18/2025, 1:43:45 PM
 class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        for (char c : s.toCharArray()) {
-            if (c == '(') {
-                stack.push(')');
-            } else if (c == '{') {
-                stack.push('}');
-            } else if (c == '[') {
-                stack.push(']');
-            } else {
-                if (stack.isEmpty() || stack.pop() != c) {
-                    return false;
-                }
-            }
+    public int lengthOfLastWord(String s) {
+        s = s.trim();
+        int lastSpaceIndex = s.lastIndexOf(' ');
+        
+        if (lastSpaceIndex == -1) {
+            return s.length();
         }
-        return stack.isEmpty();
+        return s.length() - lastSpaceIndex - 1;
     }
 }
