@@ -1,17 +1,24 @@
-// Last updated: 8/18/2025, 1:16:07 PM
+// Last updated: 8/18/2025, 1:19:46 PM
 class Solution {
-    public String longestCommonPrefix(String[] strs) {
-        Arrays.sort(strs);
-        String s1 = strs[0];
-        String s2 = strs[strs.length-1];
-        int idx = 0;
-        while(idx < s1.length() && idx < s2.length()){
-            if(s1.charAt(idx) == s2.charAt(idx)){
-                idx++;
-            } else {
-                break;
-            }
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        while(i >= 0 && j >= 0){
+          if(nums1[i] > nums2[j]){
+            nums1[k] = nums1[i];
+            i--;
+          }
+          else{
+            nums1[k] = nums2[j];
+            j--;
+          }
+          k--;
         }
-        return s1.substring(0, idx);
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
     }
 }
