@@ -1,12 +1,17 @@
-// Last updated: 8/18/2025, 1:43:45 PM
+// Last updated: 8/18/2025, 1:45:42 PM
 class Solution {
-    public int lengthOfLastWord(String s) {
-        s = s.trim();
-        int lastSpaceIndex = s.lastIndexOf(' ');
-        
-        if (lastSpaceIndex == -1) {
-            return s.length();
+    public boolean isAnagram(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
         }
-        return s.length() - lastSpaceIndex - 1;
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+
+        char[] arr1 = s1.toCharArray();
+        char[] arr2 = s2.toCharArray();
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        return Arrays.equals(arr1, arr2);
     }
 }
